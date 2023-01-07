@@ -1,17 +1,16 @@
-.container{
+body{
+    margin: 0px;
+}
 
-    height:100vh;
-    display:grid;
-    grid-template-rows: 10% 50% 40%;
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-    "logo"
-    "main"
-    "issues";
-    background-image: url("../images/background.jpeg");
-    background-repeat: no-repeat;
+.header{
+    height: 7.6vh;
+}
+
+.container{
+    height: 90vh;
+    background-image: url("../../app/images/farm.jpeg");
     background-position: center;
-    background-size: 120%;
+    background-size: cover;
     text-align: center;
     
 }
@@ -39,24 +38,4 @@
     grid-template-rows: 1fr;
     grid-template-areas: 
     "issueOne issueTwo issueThree issueFour issueFive";
-}
-
-#issueOne {
-    grid-area: issueOne;
-}
-
-#issueTwo {
-    grid-area:issueTwo;
-}
-
-#issueThree {
-    grid-area:issueThree;
-}
-
-#issueFour {
-    grid-area: issueFour;
-}
-
-#issueFive {
-    grid-area:issueFive;
 }
