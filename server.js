@@ -52,7 +52,7 @@ async function readMySQL(res) {
         multipleStatements: true
     });
     connection.connect();
-    const queryState = "SELECT * FROM `fruits` ORDER BY = ?"; //fruits is the table name 
+    const queryState = "SELECT * FROM `produce` ORDER BY = ?"; //fruits is the table name 
     
     const [rows, fields] = await connection.execute(queryState, [colomnID]);
 
