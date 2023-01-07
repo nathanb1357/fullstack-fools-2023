@@ -9,7 +9,10 @@ This is our project repository for QDS Hacks 2023.
 
 ## Technologies
 Technologies used for this project:
-* 
+* HTML
+* CSS
+* JavaScript
+* MySQL
 
 ## Project Content
 Content of the project folder:
