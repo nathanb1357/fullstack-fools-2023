@@ -50,8 +50,6 @@ app.get("/produce", function (req, res) {
 
         // connection.end();
         res.send("fruits");
-        return true; 
-
     } else {
         // const mysql = require("mysql2");
         // const connection = mysql.createConnection({
@@ -68,10 +66,10 @@ app.get("/produce", function (req, res) {
 
         //     });
 
-        connection.end();
+        // connection.end();
         res.send("vegetables");
-        return true;
     }
+    return;
 });
 
 

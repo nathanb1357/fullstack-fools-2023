@@ -28,16 +28,28 @@ ready (function(){
     //add even listesner on DOM
     document.querySelector("#submit").addEventListener("click", function(e){
 
-        let benefit = document.querySelector('input[name="benefit":checked');
-        let type = document.querySelector('input[name = "type":checked');
+        let benefit = document.getElementsByName("benefit");
+        let type = document.getElementsByName("type");
 
-        let searchKey = benefit.value;
-        let vof = type.value;
+        let searchKey;
+        for(let i=0 ; i < benefit.length; i++){
+            if(benefit[i].checked){
+                searchKey = benefit[i].value;
+            }
+        }
+        let vof;
+        for(let i=0; i < type.length; i++){
+            if(type[i].checked){
+                vof = type[i].value;
+            }
+        }
 
         console.log(searchKey);
         console.log(vof);
 
         ajaxGET("/produce?ingr=" + searchKey + "&vof=" + vof, function(data){
+            // document.getElementById("place").innerHTML = data;
+            
             console.log(data);
         });
     });
