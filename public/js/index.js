@@ -25,11 +25,11 @@ ready (function(){
     }
 
     //=================================================
-    //add even listesner on DOM
+    //add event listener on DOM
     document.querySelector("#submit").addEventListener("click", function(e){
 
         let benefit = document.querySelector('input[name="benefit":checked');
-        let type = document.querySelector('input[name = "type":checked');
+        let type = document.querySelector('input[name="type":checked');
 
         let searchKey = benefit.value;
         let vof = type.value;
@@ -37,19 +37,10 @@ ready (function(){
         console.log(searchKey);
         console.log(vof);
 
-        ajaxGET("/produce?ingr=" + searchKey + "&vof=" + vof, function(data){
+        ajaxGET('/produce?ingr=' + searchKey + '&vof=' + vof, function(data){
             console.log(data);
         });
     });
-
-
-
-
-
-
-
-
-
 });
 
 

@@ -25,29 +25,17 @@ app.get("/", function (req, res) {
     res.send(doc);
 });
 
-// app.get("/", function (req, res) {
-
-//     const prasedData = JSON.parse(data);
-
-//     const trucks = prasedData.TRUCK_ID;
-
-//     console.log(trucks);
-
-//     // just send the text stream
-//     res.send(doc);
-// });
-
 
 //=====================================================================
 //our real code from here
 app.get("/produce", function (req, res) {
-    const ingr = req.query.ingr;
-    const vof = req.query.vof;
+    const searchKey = req.query.searchKey;
+    const type = req.query.type;
 
-    console.log(vof);
-    // colomnID = ingr;
+    console.log(type);
+    console.log(searchKey);
 
-    if (vof == "fruits") {
+    if (type == "fruits") {
         const mysql = require("mysql2");
         const connection = mysql.createConnection({
             host: "localhost",
