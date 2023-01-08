@@ -44,12 +44,6 @@ ready (function(){
 
 
 
-
-
-
-
-
-
 });
 
 
