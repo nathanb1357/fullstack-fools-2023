@@ -27,8 +27,8 @@ app.get("/", function (req, res) {
 //=====================================================================
 //our real code from here
 app.get("/produce", function (req, res) {
-    const searchKey = req.query.ingr;
-    const type = req.query.vof;
+    let searchKey = req.query.ingr;
+    let type = req.query.vof;
 
     let doc =fs.readFileSync("./app/html/test.html" , "utf-8")
 
@@ -68,7 +68,7 @@ app.get("/produce", function (req, res) {
                     let box = {page:[], pack:[]};
                     let length = result.length;
 
-                    const pack = [
+                    let pack = [
                         result[length-1],
                         result[length-2],
                         result[length-3],
@@ -111,7 +111,7 @@ app.get("/produce", function (req, res) {
                     let box = {page:[], pack:[]};
                     let length = result.length;
 
-                    const pack = [
+                    let pack = [
                         result[length-1],
                         result[length-2],
                         result[length-3],

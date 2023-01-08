@@ -72,6 +72,9 @@ ready (function(){
                 document.getElementById("place4").innerHTML = pack[0][3].Name;
                 document.getElementById("place5").innerHTML = pack[0][4].Name;
 
+                document.getElementById("type").innerHTML = vof;
+                document.getElementById("benefit").innerHTML = searchKey;
+
             }
             // console.log(data);
         });
