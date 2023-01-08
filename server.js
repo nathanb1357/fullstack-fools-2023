@@ -30,8 +30,10 @@ app.get("/produce", function (req, res) {
     const searchKey = req.query.ingr;
     const type = req.query.vof;
 
-    // console.log(type);
-    // console.log(searchKey);
+    let doc =fs.readFileSync("./app/html/test.html" , "utf-8")
+
+    console.log(type);
+    console.log(searchKey);
 
     if (type == "fruits") {
         const mysql = require("mysql2");
@@ -63,15 +65,21 @@ app.get("/produce", function (req, res) {
                     connection.end();
                     return;
                 } else {
+                    let box = {page:[], pack:[]};
+                    let length = result.length;
+
                     const pack = [
-                        result[0],
-                        result[1],
-                        result[2],
-                        result[3],
-                        result[4]
+                        result[length-1],
+                        result[length-2],
+                        result[length-3],
+                        result[length-4],
+                        result[length-5]
                     ];
 
-                    res.send(pack);
+                    box.page.push(doc);
+                    box.pack.push(pack);
+
+                    res.send(box);
                 }
 
             });
@@ -100,12 +108,14 @@ app.get("/produce", function (req, res) {
                     connection.end();
                     return;
                 } else {
+                    let length = result.length;
+
                     const pack = [
-                        result[0],
-                        result[1],
-                        result[2],
-                        result[3],
-                        result[4]
+                        result[length-1],
+                        result[length-2],
+                        result[length-3],
+                        result[length-4],
+                        result[length-5]
                     ];
 
                     res.send(pack);

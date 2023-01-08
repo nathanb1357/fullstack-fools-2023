@@ -53,8 +53,30 @@ ready (function(){
         console.log(vof);
 
         ajaxGET("/produce?ingr=" + searchKey + "&vof=" + vof, function(data){
-            console.log(data);
+            let body = document.getElementById("whole");
+
+            let parsedData;
+            let page;
+            let pack;
+
+            if(data!=""){
+                parsedData = JSON.parse(data);
+                page = parsedData.page;
+                body.innerHTML = page;
+
+                pack = parsedData.pack;
+                console.log(pack);
+                document.getElementById("place1").innerHTML = pack[0][0].Name;
+                document.getElementById("place2").innerHTML = pack[0][1].Name;
+                document.getElementById("place3").innerHTML = pack[0][2].Name;
+                document.getElementById("place4").innerHTML = pack[0][3].Name;
+                document.getElementById("place5").innerHTML = pack[0][4].Name;
+
+            }
+            // console.log(data);
         });
+        
+        // window.open ("/html/produce.html");
     });
 });
 
