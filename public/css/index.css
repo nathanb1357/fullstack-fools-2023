@@ -27,11 +27,12 @@ body{
 
 h1{
     color: #ab0f0f;
+    font-size: 40px;
     text-shadow: 1px 1px white;
 }
 
 label{
-    font-size: large;
+    font-size: 20px;
     font-weight: 600;
     text-shadow: 0.5px 0.5px white;
     margin-bottom: 10px;
