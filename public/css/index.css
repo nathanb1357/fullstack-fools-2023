@@ -1,41 +1,129 @@
-body{
-    margin: 0px;
-}
-
-.header{
-    height: 7.6vh;
-}
-
 .container{
-    height: 90vh;
-    background-image: url("/img/farm.jpeg");
-    background-position: center;
-    background-size: cover;
-    text-align: center;
+    display:grid;
+    grid-template-rows: 40% 50% 70% 10% 10% 10%;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "benefit"
+    "one"
+    "prefer"
+    "option"
+    "done";
+    background-image: url("../../app/images/farm.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100%;
     
 }
 
-.logo{
-
-    grid-area:logo;
-    grid-row: 1 /span 1;
+.header {
+    background-image: url("../../app/images/logo.png");
+    background-repeat: no-repeat;
+    background-size: 5%;
 }
 
-.main {
+.benefit {
+    grid-area: benefit;
+    text-align: center;
+    font-size: 50px;
 
-    grid-area:main;
-    grid-row: 2 /span 1;
-    align-content: center;
-    justify-content: center;
-    font-size: larger;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.issues{
-    grid-area: issues;
+.one {
+    grid-area: one;
     display: grid;
-    grid-template-columns: repeat(1fr,5);
+    grid-template-columns: repeat(1fr, 2);
+    grid-template-rows: repeat(1fr, 4);
+    grid-template-areas: 
+    "protein fiber" 
+    "calcium iron" 
+    "vitaminA vitaminB"
+    "vitaminC vitaminE";
+}
+
+#protein {
+    grid-area: protein;
+    font-size: 30px;
+    text-indent: 12%;
+}
+
+#fiber {
+    grid-area: fiber;
+    font-size: 30px;
+    text-indent: 27.5%;
+}
+
+#calcium {
+    grid-area: calcium;
+    font-size: 30px;
+    text-indent: 32%;
+}
+
+#iron {
+    grid-area: iron;
+    font-size: 30px;
+    text-indent: 22%;
+}
+
+#vitaminA {
+    grid-area: vitaminA;
+    font-size: 30px;
+    text-indent: 2%;
+}
+
+#vitaminB {
+    grid-area: vitaminB;
+    font-size: 30px;
+    text-indent: 21%;
+}
+
+#vitaminC {
+    grid-area: vitaminC;
+    font-size: 30px;
+    text-indent: 24.5%;
+}
+
+#vitaminE {
+    grid-area: vitaminE;
+    font-size: 30px;
+    text-indent: 12%;
+}
+
+.prefer {
+    grid-area: prefer;
+    text-align: center;
+    font-size: 50px;
+
+}
+
+.option {
+    grid-area: option;
+    display: grid;
+    grid-template-columns: repeat(1fr, 3);
     grid-template-rows: 1fr;
     grid-template-areas: 
-    "issueOne issueTwo issueThree issueFour issueFive";
+    "fruits value veggies";
+}
+
+#fruits {
+    grid-area: fruits;
+    font-size: 30px;
+    text-indent: 30%;
+
+}
+
+#veggies {
+    grid-area: veggies;
+    font-size: 30px;
+    text-indent: 30%;
+}
+
+.done {
+    grid-area: done;
+    text-align: center;
+}
+
+#submit {
+    height:100%;
+    width:5%;
+    font-size: large;
 }
