@@ -8,3 +8,18 @@ body{
     height: 10fr;
     background-color: #FDA1A1;
 }
+
+#sbody{
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top5{
+    font-size: 2em;
+    color: #ab0f0f;
+}
+
+#place5{
+    margin-bottom: 15px;
+}
