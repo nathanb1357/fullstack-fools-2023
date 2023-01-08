@@ -11,15 +11,20 @@ body{
 
 #sbody{
     max-width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .top5{
     font-size: 2em;
     color: #ab0f0f;
+    margin-bottom: 10px;
 }
 
 #place5{
-    margin-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+button{
+    font-size: large;
 }
