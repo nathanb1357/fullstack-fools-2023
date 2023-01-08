@@ -27,11 +27,11 @@ app.get("/", function (req, res) {
 //=====================================================================
 //our real code from here
 app.get("/produce", function (req, res) {
-    const searchKey = req.query.searchKey;
-    const type = req.query.type;
+    const searchKey = req.query.ingr;
+    const type = req.query.vof;
 
-    console.log(type);
-    console.log(searchKey);
+    // console.log(type);
+    // console.log(searchKey);
 
     if (type == "fruits") {
         const mysql = require("mysql2");
@@ -42,12 +42,13 @@ app.get("/produce", function (req, res) {
             database: "fvdata",
         });
         connection.connect();
-
-        console.log("s connect");
+        
+        //for debug
+        // console.log("s connect");
 
         connection.query(
-            "SELECT Name FROM fruits ORDER BY vitaminB",
-            // [searchKey] + " DESC",
+            "SELECT Name FROM fruits ORDER BY ?" ,
+            [searchKey],
             function (error, result, fields) {
                 
                 //for debug
@@ -87,8 +88,8 @@ app.get("/produce", function (req, res) {
         });
         connection.connect();
         connection.execute(
-            'SELECT Name FROM `vegetables` ORDER BY `vitamin B` DESC`',
-            // [searchKey],
+            "SELECT Name FROM vegetables ORDER BY ?",
+            [searchKey],
             function (error, result, fields) {
                  //for debug
                  console.log(result);
