@@ -8,27 +8,26 @@
         <link rel="stylesheet" href="/css/produce.css">
     </head>
     <body>
-        
         <!-- Template for the top 5 fruit or vegetables -->
-        <a href="/index.html"> back to the form</a>
+        <div class="header"><img src="/images/logo2.png" height="70vh"></div>
+        <div id="sbody">
+            <a href="/index.html"> back to the form</a>
+            <h1>The top 5 <dfn id="type"></dfn> for <dfn id="benefit"></dfn> are:</h1>
+            <div id="top5"></div>
 
-        <template id="top5-template">
-            <div id="place1"></div>
-            <div id="place2"></div>
-            <div id="place3"></div>
-            <div id="place4"></div>
-            <div id="place5"></div>
-        </template>
+            <div id="top5-template">
+                <div class="top5" id="place1"></div>
+                <div class="top5" id="place2"></div>
+                <div class="top5" id="place3"></div>
+                <div class="top5" id="place4"></div>
+                <div class="top5" id="place5"></div>
+            </div>
 
-        <div class="header">Produce Pros</div>
-        <h1> Top 5 fruits </h1>
-        <h1>The top 5 [fruits] for [iron] are:</h1>
-        <div id="top5"></div>
-
-         <!-- onclick="history.back(-1)" -->
-         <form action="/" method="get">
-            <button type="submit">Go Back</button>
-        </form>
+            <!-- onclick="history.back(-1)" -->
+            <form action="/" method="get">
+                <button type="submit">Go Back</button>
+            </form>
+        </div>
 
         <script src="/js/produce.js"></script>
     </body>

@@ -30,7 +30,7 @@ app.get("/produce", function (req, res) {
     let searchKey = req.query.ingr;
     let type = req.query.vof;
 
-    let doc =fs.readFileSync("./app/html/test.html" , "utf-8")
+    let doc =fs.readFileSync("./app/html/produce.html" , "utf-8")
 
     console.log(type);
     console.log(searchKey);
