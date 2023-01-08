@@ -66,11 +66,11 @@ ready (function(){
 
                 pack = parsedData.pack;
                 console.log(pack);
-                document.getElementById("place1").innerHTML = pack[0][0].Name.replaceAll('_', ' ');
-                document.getElementById("place2").innerHTML = pack[0][1].Name.replaceAll('_', ' ');
-                document.getElementById("place3").innerHTML = pack[0][2].Name.replaceAll('_', ' ');
-                document.getElementById("place4").innerHTML = pack[0][3].Name.replaceAll('_', ' ');
-                document.getElementById("place5").innerHTML = pack[0][4].Name.replaceAll('_', ' ');
+                document.getElementById("place1").innerHTML = "5. " + pack[0][4].Name.replaceAll('_', ' ');
+                document.getElementById("place2").innerHTML = "4. " + pack[0][3].Name.replaceAll('_', ' ');
+                document.getElementById("place3").innerHTML = "3. " + pack[0][2].Name.replaceAll('_', ' ');
+                document.getElementById("place4").innerHTML = "2. " + pack[0][1].Name.replaceAll('_', ' ');
+                document.getElementById("place5").innerHTML = "1. " + pack[0][0].Name.replaceAll('_', ' ');
 
                 document.getElementById("type").innerHTML = vof.replaceAll('_', ' ');
                 document.getElementById("benefit").innerHTML = searchKey.replaceAll('_', ' ');

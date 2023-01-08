@@ -196,11 +196,11 @@ app.get("/produce", function (req, res) {
                     let length = result.length;
 
                     let pack = [
-                        result[length-1],
-                        result[length-2],
-                        result[length-3],
+                        result[length-5],
                         result[length-4],
-                        result[length-5]
+                        result[length-3],
+                        result[length-2],
+                        result[length-1]
                     ];
 
                     box.page.push(doc);
