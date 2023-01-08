@@ -31,21 +31,26 @@ ready (function(){
         let benefit = document.getElementsByName("benefit");
         let type = document.getElementsByName("type");
 
-        let searchKey;
+        let searchKey = "";
         for(let i=0 ; i < benefit.length; i++){
             if(benefit[i].checked){
                 searchKey = benefit[i].value;
             }
         }
-        let vof;
+        let vof = "";
         for(let i=0; i < type.length; i++){
             if(type[i].checked){
                 vof = type[i].value;
             }
         }
 
-        console.log(searchKey);
-        console.log(vof);
+        if(searchKey == "" || vof == ""){
+            window.alert("Any selection cannot empty!");
+            return;
+        }
+
+        // console.log(searchKey);
+        // console.log(vof);
 
         ajaxGET("/produce?ingr=" + searchKey + "&vof=" + vof, function(data){
             console.log(data);

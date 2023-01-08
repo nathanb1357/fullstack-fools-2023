@@ -5,11 +5,13 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../public/css/produce.css">
+        <link rel="stylesheet" href="/css/produce.css">
     </head>
     <body>
         
         <!-- Template for the top 5 fruit or vegetables -->
+        <a href="/index.html"> back to the form</a>
+
         <template id="top5-template">
             <div id="place1"></div>
             <div id="place2"></div>
@@ -19,9 +21,15 @@
         </template>
 
         <div class="header">Produce Pros</div>
+        <h1> Top 5 fruits </h1>
         <h1>The top 5 [fruits] for [iron] are:</h1>
         <div id="top5"></div>
 
-        <script src="../../public/js/produce.js"></script>
+         <!-- onclick="history.back(-1)" -->
+         <form action="/" method="get">
+            <button type="submit">Go Back</button>
+        </form>
+
+        <script src="/js/produce.js"></script>
     </body>
 </html>

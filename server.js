@@ -29,44 +29,63 @@ app.get("/produce", function (req, res) {
     const searchKey = req.query.searchKey;
     const type = req.query.type;
 
-    console.log(type);
-    console.log(searchKey);
+    // console.log(type);
+    // console.log(searchKey);
 
-    if (vof == "fruits") {
-        // const mysql = require("mysql2");
-        // const connection = mysql.createConnection({
-        //     host: "localhost",
-        //     user: "root",
-        //     password: "",
-        //     database: "fvdata",
-        // });
-        // connection.connect();
-        // connection.execute(
-        //     "SELECT * FROM `fruits` ORDER BY = ?",
-        //     [ingr],
-        //     function (error, result, fields) {
+    if (type == "fruits") {
+        const mysql = require("mysql2");
+        const connection = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "",
+            database: "fvdata",
+        });
+        connection.connect();
+        connection.execute(
+            "SELECT Name FROM `fruits` ORDER BY = ?",
+            [searchKey] + " DESC",
+            function (error, result, fields) {
+                if (error) {
+                    console.log(error);
+                }
 
-        //     });
+                if (typeof result[0] == 'undefined') {
+                    res.send(null);
+                    connection.end();
+                    return;
+                } else {
+                    const pack = [
+                        result[0],
+                        result[1],
+                        result[2],
+                        result[3],
+                        result[4]
+                    ];
 
-        // connection.end();
+                    res.send(pack);
+                }
+
+            });
+
+        connection.end();
         res.send("fruits");
     } else {
-        // const mysql = require("mysql2");
-        // const connection = mysql.createConnection({
-        //     host: "localhost",
-        //     user: "root",
-        //     password: "",
-        //     database: "fvdata",
-        // });
-        // connection.connect();
-        // connection.execute(
-        //     "SELECT * FROM `vegetables` ORDER BY = ?",
-        //     [ingr],
-        //     function (error, result, fields) {
+        const mysql = require("mysql2");
+        const connection = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "",
+            database: "fvdata",
+        });
+        connection.connect();
+        connection.execute(
+            "SELECT Name FROM `vegetables` ORDER BY = ?",
+            [searchKey],
+            function (error, result, fields) {
 
-        //     });
+            });
 
-        // connection.end();
+        connection.end();
         res.send("vegetables");
     }
     return;
