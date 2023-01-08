@@ -14,7 +14,7 @@ const fs = require("fs");
 // we are mapping file system paths to the app's virtual paths
 app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
-app.use("/img", express.static("./app/images"));
+app.use("/images", express.static("./app/images"));
 
 app.get("/", function (req, res) {
     let doc = fs.readFileSync("./app/html/index.html", "utf8");

@@ -9,14 +9,14 @@
     "prefer"
     "option"
     "done";
-    background-image: url("../../app/images/farm.jpeg");
+    background-image: url("/images/farm.jpeg");
     background-repeat: no-repeat;
     background-size: 100%;
     
 }
 
 .header {
-    background-image: url("../../app/images/logo.png");
+    background-image: url("/images/logo.png");
     background-repeat: no-repeat;
     background-size: 5%;
 }
