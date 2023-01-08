@@ -54,6 +54,7 @@ ready (function(){
 
         ajaxGET("/produce?ingr=" + searchKey + "&vof=" + vof, function(data){
             console.log(data);
+            window.location.assign("produce/?ingr=" + searchKey + "&vof=" + vof);
         });
     });
 });
