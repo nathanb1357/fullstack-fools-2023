@@ -10,8 +10,6 @@ const app = express();
 app.use(express.json());
 const fs = require("fs");
 
-var colomnID = 2;
-
 // just like a simple web server like Apache web server
 // we are mapping file system paths to the app's virtual paths
 app.use("/js", express.static("./public/js"));
@@ -25,7 +23,6 @@ app.get("/", function (req, res) {
     res.send(doc);
 });
 
-
 //=====================================================================
 //our real code from here
 app.get("/produce", function (req, res) {
@@ -35,15 +32,15 @@ app.get("/produce", function (req, res) {
     console.log(type);
     console.log(searchKey);
 
-    if (type == "fruits") {
-        const mysql = require("mysql2");
-        const connection = mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "",
-            database: "vfdata",
-        });
-        connection.connect();
+    if (vof == "fruits") {
+        // const mysql = require("mysql2");
+        // const connection = mysql.createConnection({
+        //     host: "localhost",
+        //     user: "root",
+        //     password: "",
+        //     database: "fvdata",
+        // });
+        // connection.connect();
         // connection.execute(
         //     "SELECT * FROM `fruits` ORDER BY = ?",
         //     [ingr],
@@ -51,19 +48,19 @@ app.get("/produce", function (req, res) {
 
         //     });
 
-        connection.end();
+        // connection.end();
         res.send("fruits");
         return true; 
 
     } else {
-        const mysql = require("mysql2");
-        const connection = mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "",
-            database: "vfdata",
-        });
-        connection.connect();
+        // const mysql = require("mysql2");
+        // const connection = mysql.createConnection({
+        //     host: "localhost",
+        //     user: "root",
+        //     password: "",
+        //     database: "fvdata",
+        // });
+        // connection.connect();
         // connection.execute(
         //     "SELECT * FROM `vegetables` ORDER BY = ?",
         //     [ingr],
