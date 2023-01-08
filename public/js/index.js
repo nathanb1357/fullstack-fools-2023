@@ -25,7 +25,7 @@ ready (function(){
     }
 
     //=================================================
-    //add even listesner on DOM
+    //add event listener on DOM
     document.querySelector("#submit").addEventListener("click", function(e){
 
         let benefit = document.getElementsByName("benefit");
@@ -48,14 +48,9 @@ ready (function(){
         console.log(vof);
 
         ajaxGET("/produce?ingr=" + searchKey + "&vof=" + vof, function(data){
-            // document.getElementById("place").innerHTML = data;
-            
             console.log(data);
         });
     });
-
-
-
 });
 
 

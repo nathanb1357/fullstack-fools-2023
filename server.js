@@ -26,11 +26,11 @@ app.get("/", function (req, res) {
 //=====================================================================
 //our real code from here
 app.get("/produce", function (req, res) {
-    const ingr = req.query.ingr;
-    const vof = req.query.vof;
+    const searchKey = req.query.searchKey;
+    const type = req.query.type;
 
-    console.log(vof);
-    // colomnID = ingr;
+    console.log(type);
+    console.log(searchKey);
 
     if (vof == "fruits") {
         // const mysql = require("mysql2");
