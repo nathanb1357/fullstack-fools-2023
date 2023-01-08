@@ -45,7 +45,7 @@ ready (function(){
         }
 
         if(searchKey == "" || vof == ""){
-            window.alert("Any selection cannot empty!");
+            window.alert("Both selections are required!");
             return;
         }
 
