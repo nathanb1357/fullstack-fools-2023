@@ -1,4 +1,4 @@
-# Full-Stack Fools
+# Produce Pros
 * [General Info](#general-info)
 * [Technologies](#technologies)
 * [Project Content](#project-content)
@@ -6,7 +6,7 @@
 
 ## General Info
 This is our project repository for QDS Hacks 2023. Our app lets users choose a health benefit they would like and displays which fruits or vegetables would best supply
- the nutrients they need
+ the nutrients they need!
 
 ## Technologies
 Technologies used for this project:
