@@ -108,6 +108,7 @@ app.get("/produce", function (req, res) {
                     connection.end();
                     return;
                 } else {
+                    let box = {page:[], pack:[]};
                     let length = result.length;
 
                     const pack = [
@@ -118,7 +119,10 @@ app.get("/produce", function (req, res) {
                         result[length-5]
                     ];
 
-                    res.send(pack);
+                    box.page.push(doc);
+                    box.pack.push(pack);
+
+                    res.send(box);
                 }
                 
             });
