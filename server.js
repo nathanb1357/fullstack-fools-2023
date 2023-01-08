@@ -10,13 +10,13 @@ const app = express();
 app.use(express.json());
 const fs = require("fs");
 
-var colomnID = 1;
+var colomnID = 2;
 
 // just like a simple web server like Apache web server
 // we are mapping file system paths to the app's virtual paths
 app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
-app.use("/img", express.static("./public/img"));
+app.use("/img", express.static("./app/images"));
 
 app.get("/", function (req, res) {
     let doc = fs.readFileSync("./app/html/index.html", "utf8");
@@ -26,7 +26,7 @@ app.get("/", function (req, res) {
 });
 
 // app.get("/", function (req, res) {
-    
+
 //     const prasedData = JSON.parse(data);
 
 //     const trucks = prasedData.TRUCK_ID;
@@ -40,30 +40,54 @@ app.get("/", function (req, res) {
 
 //=====================================================================
 //our real code from here
+app.get("/produce", function (req, res) {
+    const ingr = req.query.ingr;
+    const vof = req.query.vof;
 
-//async way
-async function readMySQL(res) {
-    const mysql = require('mysql2/promise');
-    const connection = await mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "fvdata", //currently fvdata is the data base name
-        multipleStatements: true
-    });
-    connection.connect();
-    const queryState = "SELECT * FROM `produce` ORDER BY = ?"; //fruits is the table name 
-    
-    const [rows, fields] = await connection.execute(queryState, [colomnID]);
+    console.log(vof);
+    // colomnID = ingr;
 
-    //=====================================
-    //feedback info as table or else
-    //=====================================
-    
-    connection.end();
-    res.send(table);
-    return;
-}
+    if (vof == "fruits") {
+        const mysql = require("mysql2");
+        const connection = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "",
+            database: "vfdata",
+        });
+        connection.connect();
+        // connection.execute(
+        //     "SELECT * FROM `fruits` ORDER BY = ?",
+        //     [ingr],
+        //     function (error, result, fields) {
+
+        //     });
+
+        connection.end();
+        res.send("fruits");
+        return true; 
+
+    } else {
+        const mysql = require("mysql2");
+        const connection = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "",
+            database: "vfdata",
+        });
+        connection.connect();
+        // connection.execute(
+        //     "SELECT * FROM `vegetables` ORDER BY = ?",
+        //     [ingr],
+        //     function (error, result, fields) {
+
+        //     });
+
+        connection.end();
+        res.send("vegetables");
+        return true;
+    }
+});
 
 
 
