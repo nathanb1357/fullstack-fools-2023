@@ -49,8 +49,8 @@ ready (function(){
             return;
         }
 
-        // console.log(searchKey);
-        // console.log(vof);
+        console.log(searchKey);
+        console.log(vof);
 
         ajaxGET("/produce?ingr=" + searchKey + "&vof=" + vof, function(data){
             console.log(data);

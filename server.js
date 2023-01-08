@@ -15,6 +15,7 @@ const fs = require("fs");
 app.use("/js", express.static("./public/js"));
 app.use("/css", express.static("./public/css"));
 app.use("/images", express.static("./app/images"));
+app.use("/html", express.static("./app/html"))
 
 app.get("/", function (req, res) {
     let doc = fs.readFileSync("./app/html/index.html", "utf8");
@@ -29,8 +30,8 @@ app.get("/produce", function (req, res) {
     const searchKey = req.query.searchKey;
     const type = req.query.type;
 
-    // console.log(type);
-    // console.log(searchKey);
+    console.log(type);
+    console.log(searchKey);
 
     if (type == "fruits") {
         const mysql = require("mysql2");
@@ -41,10 +42,17 @@ app.get("/produce", function (req, res) {
             database: "fvdata",
         });
         connection.connect();
-        connection.execute(
-            "SELECT Name FROM `fruits` ORDER BY = ?",
-            [searchKey] + " DESC",
+
+        console.log("s connect");
+
+        connection.query(
+            "SELECT Name FROM fruits ORDER BY vitaminB",
+            // [searchKey] + " DESC",
             function (error, result, fields) {
+                
+                //for debug
+                console.log(result);
+
                 if (error) {
                     console.log(error);
                 }
@@ -68,7 +76,7 @@ app.get("/produce", function (req, res) {
             });
 
         connection.end();
-        res.send("fruits");
+        
     } else {
         const mysql = require("mysql2");
         const connection = mysql.createConnection({
@@ -79,14 +87,36 @@ app.get("/produce", function (req, res) {
         });
         connection.connect();
         connection.execute(
-            "SELECT Name FROM `vegetables` ORDER BY = ?",
-            [searchKey],
+            'SELECT Name FROM `vegetables` ORDER BY `vitamin B` DESC`',
+            // [searchKey],
             function (error, result, fields) {
+                 //for debug
+                 console.log(result);
+
+                 if (error) {
+                     console.log(error);
+                 }
+ 
+                 if (typeof result[0] == 'undefined') {
+                     res.send(null);
+                     connection.end();
+                     return;
+                 } else {
+                     const pack = [
+                         result[0],
+                         result[1],
+                         result[2],
+                         result[3],
+                         result[4]
+                     ];
+ 
+                     res.send(pack);
+                 }
 
             });
 
         connection.end();
-        res.send("vegetables");
+        // res.send("vegetables");
     }
     return;
 });
