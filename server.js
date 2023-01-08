@@ -34,6 +34,7 @@ app.get("/produce", function (req, res) {
 
     console.log(type);
     console.log(searchKey);
+    console.log(typeof(searchKey));
 
     if (type == "fruits") {
         const mysql = require("mysql2");
@@ -42,15 +43,58 @@ app.get("/produce", function (req, res) {
             user: "root",
             password: "",
             database: "fvdata",
+            multipleStatements: true,
         });
         connection.connect();
         
         //for debug
         // console.log("s connect");
 
-        connection.query(
-            "SELECT Name FROM fruits ORDER BY ?" ,
-            [searchKey],
+        squepool = [
+            "SELECT Name FROM `fruits` ORDER BY Protein DESC LIMIT 5",
+            "SELECT Name FROM `fruits` ORDER BY Fiber DESC LIMIT 5",
+            "SELECT Name FROM `fruits` ORDER BY Calcium DESC LIMIT 5",
+            "SELECT Name FROM `fruits` ORDER BY Iron DESC LIMIT 5",
+            "SELECT Name FROM `fruits` ORDER BY VitaminA DESC LIMIT 5",
+            "SELECT Name FROM `fruits` ORDER BY VitaminB DESC LIMIT 5",
+            "SELECT Name FROM `fruits` ORDER BY VitaminC DESC LIMIT 5",
+            "SELECT Name FROM `fruits` ORDER BY VitaminE DESC LIMIT 5",            
+        ]
+
+        let sqlStatement;
+
+        switch(searchKey){
+            case "Protein":
+                sqlStatement = squepool[0];
+            break;
+            case "Fiber":
+                sqlStatement = squepool[1];
+            break;
+            case "Calcuim":
+                sqlStatement = squepool[2];
+            break;
+            case "Iron":
+                sqlStatement = squepool[3];
+            break;
+            case "VitaminA":
+                sqlStatement = squepool[4];
+            break;
+            case "VitaminB":
+                sqlStatement = squepool[5];
+            break;
+            case "VitaminC":
+                sqlStatement = squepool[6];
+            break;
+            default:
+                sqlStatement = squepool[7];
+        }
+
+
+
+        connection.execute(
+            // "SELECT Name FROM `fruits` ORDER BY ? DESC LIMIT 5" ,
+            // [searchKey],
+            sqlStatement,
             function (error, result, fields) {
                 
                 //for debug
@@ -66,14 +110,12 @@ app.get("/produce", function (req, res) {
                     return;
                 } else {
                     let box = {page:[], pack:[]};
-                    let length = result.length;
-
                     let pack = [
-                        result[length-1],
-                        result[length-2],
-                        result[length-3],
-                        result[length-4],
-                        result[length-5]
+                        result[0],
+                        result[1],
+                        result[2],
+                        result[3],
+                        result[4]
                     ];
 
                     box.page.push(doc);
@@ -94,10 +136,52 @@ app.get("/produce", function (req, res) {
             password: "",
             database: "fvdata",
         });
+
+        squepool = [
+            "SELECT Name FROM `vegetables` ORDER BY Protein DESC LIMIT 5",
+            "SELECT Name FROM `vegetables` ORDER BY Fiber DESC LIMIT 5",
+            "SELECT Name FROM `vegetables` ORDER BY Calcium DESC LIMIT 5",
+            "SELECT Name FROM `vegetables` ORDER BY Iron DESC LIMIT 5",
+            "SELECT Name FROM `vegetables` ORDER BY VitaminA DESC LIMIT 5",
+            "SELECT Name FROM `vegetables` ORDER BY VitaminB DESC LIMIT 5",
+            "SELECT Name FROM `vegetables` ORDER BY VitaminC DESC LIMIT 5",
+            "SELECT Name FROM `vegetables` ORDER BY VitaminE DESC LIMIT 5",            
+        ]
+
+        let sqlStatement;
+
+        switch(searchKey){
+            case "Protein":
+                sqlStatement = squepool[0];
+            break;
+            case "Fiber":
+                sqlStatement = squepool[1];
+            break;
+            case "Calcuim":
+                sqlStatement = squepool[2];
+            break;
+            case "Iron":
+                sqlStatement = squepool[3];
+            break;
+            case "VitaminA":
+                sqlStatement = squepool[4];
+            break;
+            case "VitaminB":
+                sqlStatement = squepool[5];
+            break;
+            case "VitaminC":
+                sqlStatement = squepool[6];
+            break;
+            default:
+                sqlStatement = squepool[7];
+        }
         connection.connect();
         connection.execute(
-            "SELECT Name FROM vegetables ORDER BY ?",
-            [searchKey],
+
+            sqlStatement,
+            // "SELECT Name FROM vegetables ORDER BY fiber LIMIT 5",
+            
+            // [searchKey],
             function (error, result, fields) {
                 if (error) {
                     console.log(error);
