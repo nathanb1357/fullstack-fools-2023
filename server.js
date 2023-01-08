@@ -91,29 +91,26 @@ app.get("/produce", function (req, res) {
             "SELECT Name FROM vegetables ORDER BY ?",
             [searchKey],
             function (error, result, fields) {
-                 //for debug
-                 console.log(result);
+                if (error) {
+                    console.log(error);
+                }
 
-                 if (error) {
-                     console.log(error);
-                 }
- 
-                 if (typeof result[0] == 'undefined') {
-                     res.send(null);
-                     connection.end();
-                     return;
-                 } else {
-                     const pack = [
-                         result[0],
-                         result[1],
-                         result[2],
-                         result[3],
-                         result[4]
-                     ];
- 
-                     res.send(pack);
-                 }
+                if (typeof result[0] == 'undefined') {
+                    res.send(null);
+                    connection.end();
+                    return;
+                } else {
+                    const pack = [
+                        result[0],
+                        result[1],
+                        result[2],
+                        result[3],
+                        result[4]
+                    ];
 
+                    res.send(pack);
+                }
+                
             });
 
         connection.end();
@@ -124,14 +121,13 @@ app.get("/produce", function (req, res) {
 
 
 
-
-
 // for page not found (i.e., 404)
 app.use(function (req, res, next) {
     // this could be a separate file too - but you'd have to make sure that you have the path
     // correct, otherewise, you'd get a 404 on the 404 (actually a 500 on the 404)
     res.status(404).send("<html><head><title>Page not found!</title></head><body><p>Nothing here.</p></body></html>");
 });
+
 // RUN SERVER
 let port = 8000;
 app.listen(port, function () {
